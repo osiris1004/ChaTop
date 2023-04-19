@@ -1,22 +1,18 @@
 package com.backend.chatop.service.User;
 import java.util.List;
 import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.backend.chatop.model.User.User;
-import com.backend.chatop.repository.IUserRepository;
+import com.backend.chatop.repository.UserRepository;
 import lombok.*;
 
 
-@NoArgsConstructor  
-@AllArgsConstructor
-
+@RequiredArgsConstructor
 @Service 
 public class UserService implements IUserService{
 
-    @Autowired
-    private IUserRepository userRepository;
+    
+    private final UserRepository userRepository;
 
     @Override
     public List<User> getUsers(){
@@ -37,8 +33,5 @@ public class UserService implements IUserService{
     public User saveUser(User user){
         return userRepository.save(user);
     }
-  
-
-    
     
 }
