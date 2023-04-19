@@ -1,9 +1,8 @@
 package com.backend.chatop.Auth.service;
 
-
-import com.backend.chatop.Auth.RegisterRequest;
-import com.backend.chatop.Auth.controller.AuthRequest;
-import com.backend.chatop.Auth.controller.AuthResponse;
+import com.backend.chatop.Auth.authenticate.AuthRequest;
+import com.backend.chatop.Auth.authenticate.AuthResponse;
+import com.backend.chatop.Auth.registry.RegisterRequest;
 import com.backend.chatop.config.middleware.JwtService;
 import com.backend.chatop.model.User.Role;
 import com.backend.chatop.model.User.User;
@@ -18,59 +17,42 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AuthService {
 
-    private final UserRepository repository;
-    private  final PasswordEncoder passwordEncoder;
-    private  final JwtService jwtService;
-    private  final AuthenticationManager authenticationManager;
+        private final UserRepository repository;
+        private final PasswordEncoder passwordEncoder;
+        private final JwtService jwtService;
+        private final AuthenticationManager authenticationManager;
 
-    public AuthResponse register(RegisterRequest request) {
-        //create a user object out of the RegisterRequest ^
+        public AuthResponse register(RegisterRequest request) {
+                var user = User
+                                .builder()
+                                .firstName(request.getFirstName())
+                                .lastName(request.getLastName())
+                                .email(request.getEmail())
+                                .password(passwordEncoder.encode(request.getPassword()))
+                                .role(Role.USER)
+                                .build();
 
-        var user = User.builder()
-                .firstName(request.getFirstname())
-                .lastName(request.getLastname())
-                .email(request.getEmail())
-                .password(passwordEncoder.encode(request.getPassword()))
-                .role(Role.USER)
-                .build();
+                repository.save(user);
 
-        repository.save(user);
+                var jwtToken = jwtService.generateToken(user);
 
-        //generate token
-        var jwtToken = jwtService.generateToken(user);
+                return AuthResponse
+                                .builder()
+                                .token(jwtToken)
+                                .build();
+        }
 
-        return  AuthResponse
-                .builder()
-                .token(jwtToken)
-                .build();
-    }
+        public AuthResponse authenticate(AuthRequest request) {
+                authenticationManager.authenticate(
+                                new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
 
-    public AuthResponse authenticate(AuthRequest request) {
-        //to authenticate make use of au
+                var user = repository.findByEmail(request.getEmail()).orElseThrow();
 
-        System.out.println(
-                    "*******************************\n" +
-                    request
-                    +"\n********************************" 
-                );
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        request.getEmail(),
-                        request.getPassword()
-                )
-        );
+                var jwtToken = jwtService.generateToken(user);
 
-        //get the user
-        var user = repository.findByEmail(request.getEmail())
-                .orElseThrow();
-
-
-        //generate token
-        var jwtToken = jwtService.generateToken(user);
-
-        return  AuthResponse
-                .builder()
-                .token(jwtToken)
-                .build();
-    }
+                return AuthResponse
+                                .builder()
+                                .token(jwtToken)
+                                .build();
+        }
 }
