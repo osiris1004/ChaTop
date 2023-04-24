@@ -11,8 +11,8 @@ import lombok.*;
 @Builder
 @NoArgsConstructor 
 @AllArgsConstructor
-@Entity(name = "rental") 
-@Table(name = "rental")
+@Entity(name = "rentals") 
+@Table(name = "rentals")
 public class Rental {
 
     @Id
@@ -22,11 +22,11 @@ public class Rental {
     @Column(name = "name")
     private String name;
 
-    @Id
+
     @Column(name = "surface")
     private  Double surface;
 
-    @Id
+
     @Column(name = "price")
     private  Double  price;
     
