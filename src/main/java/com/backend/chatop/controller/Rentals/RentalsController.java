@@ -42,12 +42,13 @@ public class RentalsController {
         return ResponseEntity.ok(rentalService.saveRental(rental));
     }
 
-    @PutMapping("/rentals{id}")
+    @PutMapping("/rentals/{id}")
     public ResponseEntity<Rental> updateRental(@PathVariable("id") Integer id, @RequestBody Rental rental) {
+        rental.setId(id);
         return ResponseEntity.ok(rentalService.updateRental(rental));
     }
 
-    @DeleteMapping("/rentals{id}")
+    @DeleteMapping("/rentals/{id}")
     public ResponseEntity<?> deleteRental(@PathVariable("id") Integer id) {
         rentalService.deleteRental(id);
         return (ResponseEntity<?>) ResponseEntity.noContent();

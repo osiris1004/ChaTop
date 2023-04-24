@@ -5,11 +5,6 @@ import java.util.Map;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-
-
-
-
-
 public class ResponseRentals {
     public static ResponseEntity<Object> generateResponse(HttpStatus status, Object responseObj) {
         Map<String, Object> map = new HashMap<String, Object>();
