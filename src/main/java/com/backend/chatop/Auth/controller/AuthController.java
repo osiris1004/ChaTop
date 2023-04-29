@@ -13,7 +13,7 @@ import com.backend.chatop.Auth.authenticate.AuthRequest;
 import com.backend.chatop.Auth.authenticate.AuthResponse;
 import com.backend.chatop.Auth.registry.RegisterRequest;
 import com.backend.chatop.Auth.service.AuthService;
-import com.backend.chatop.config.middleware.JwtService;
+import com.backend.chatop.config.Security.middleware.JwtService;
 import com.backend.chatop.model.User.User;
 import com.backend.chatop.service.User.UserService;
 
