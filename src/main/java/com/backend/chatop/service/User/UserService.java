@@ -1,37 +1,34 @@
 package com.backend.chatop.service.User;
-import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
+
+import com.backend.chatop.errors.ResourceNotFoundException;
 import com.backend.chatop.model.User.User;
 import com.backend.chatop.repository.UserRepository;
 import lombok.*;
 
 
 @RequiredArgsConstructor
-@Service 
+@Service
 public class UserService implements IUserService{
 
-    
     private final UserRepository userRepository;
 
     @Override
-    public List<User> getUsers(){
-        System.out.println(userRepository.findAll());
-        return userRepository.findAll();
+    public User getUserByEmail(String email) {
+        Optional<User> user = userRepository.findByEmail(email);
+        if(user.isPresent()){
+            return user.get();
+        }  throw  new RuntimeException(email+ "does not exist");
     }
 
     @Override
-    public User getUserById(Integer id){
-        Optional<User> user = userRepository.findById(id);
-        if(user.isPresent()){
-            return user.get();
+    public User getUserById(Integer id) {
+        Optional<User> rental = userRepository.findById(id);
+        if(rental.isPresent()){
+            return rental.get();
         }
-        throw  new RuntimeException("user is not found for the id "+id); // this nay return an optional object
+        throw  new ResourceNotFoundException("Not found rentals with id = " + id);
     }
-   
-    @Override
-    public User saveUser(User user){
-        return userRepository.save(user);
-    }
-    
+
 }
