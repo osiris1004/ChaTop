@@ -3,6 +3,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -60,6 +61,18 @@ public class Rental {
     @JsonManagedReference
     private Attachment attachment;
   
+
+    public Rental(String name, Double surface, String picture, Double double1, String string, Integer owner_id, Date created_at, Attachment attachment) {
+    
+        this.name = name;
+        this.surface = surface;
+        this.picture = picture;
+        this.price = double1;
+        this.description = string;
+        this.owner_id = owner_id;
+        this.created_at = created_at;
+        this.attachment = attachment;
+    }
    
 
     

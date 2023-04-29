@@ -23,10 +23,19 @@ public class AttachmentService implements IAttachmentService{
 
 
     @Override
-    public byte[] getAttachmentById(Integer id) {
+    public byte[] getImageByAttachmentId(Integer id) {
         Optional<Attachment> attachment = attachmentRepository.findById(id);
         if(attachment.isPresent()){
             return attachment.get().getData();
+        }
+        throw  new ResourceNotFoundException("Not found Attachments with id = " + id);
+    }
+
+    @Override
+    public Attachment getAttachmentById(Integer id)  {
+        Optional<Attachment> attachment = attachmentRepository.findById(id);
+        if(attachment.isPresent()){
+            return attachment.get();
         }
         throw  new ResourceNotFoundException("Not found Attachments with id = " + id);
     }

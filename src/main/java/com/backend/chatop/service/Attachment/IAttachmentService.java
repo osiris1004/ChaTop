@@ -6,7 +6,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.backend.chatop.model.Attachment;
 
 public interface IAttachmentService {
-    byte[] getAttachmentById(Integer id);
+    byte[] getImageByAttachmentId(Integer id);
+    Attachment getAttachmentById(Integer id);
     Attachment saveAttachment(MultipartFile file);
     Attachment updateAttachment(MultipartFile file, Integer id);
     void deleteAttachment(Integer id);

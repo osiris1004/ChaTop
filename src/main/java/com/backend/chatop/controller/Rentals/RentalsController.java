@@ -55,27 +55,29 @@ public class RentalsController {
     //!ADD
     @PostMapping("/rentals")
     public ResponseEntity<Rental> saveRental(
-        @RequestPart("data") Rental rental,
-        @RequestPart("file") MultipartFile file){
+        // @RequestPart("data") Rental rental,
+        // @RequestPart("file") MultipartFile file
+        @ModelAttribute RequestRentals rental
+        ){
         //**File */
-        Attachment attachment = attachmentService.saveAttachment(file);
-        rental.setAttachment(attachment);
-        rental.setPicture(attachment.getAttachmentUrl());
-        return ResponseEntity.ok(rentalService.saveRental(rental));
+        Attachment attachment = attachmentService.saveAttachment(rental.getPicture());
+        Rental newRental = new Rental(rental.getName(), rental.getSurface(), attachment.getAttachmentUrl(),  rental.getPrice(), rental.getDescription(), rental.getOwner_id(), rental.getCreated_at(), attachment);
+        return ResponseEntity.ok(rentalService.saveRental(newRental));
     }
 
      //!UPDATE
     @PutMapping("/rentals/{id}")
     public ResponseEntity<Rental> updateRental(
-            @PathVariable("id") Integer id,
-            @RequestPart("data") Rental rental,
-            @RequestPart("file") MultipartFile file) {
+             @PathVariable("id") Integer id,
+            // @RequestPart("data") Rental rental,
+            // @RequestPart("file") MultipartFile file
+            @ModelAttribute RequestRentals rental
+            ) {
 
-        rental.setId(id);
-        Attachment attachment = attachmentService.updateAttachment(file, id);
-        rental.setAttachment(attachment);
-        rental.setPicture(attachment.getAttachmentUrl());
-        return ResponseEntity.ok(rentalService.updateRental(rental));
+ 
+        Attachment attachment = attachmentService.getAttachmentById(id);
+        Rental updateRental = new Rental(id, rental.getName(), rental.getSurface(), attachment.getAttachmentUrl(),  rental.getPrice(), rental.getDescription(), rental.getOwner_id(), rental.getCreated_at(), attachment);
+        return ResponseEntity.ok(rentalService.updateRental(updateRental));
 
     }
 
@@ -90,7 +92,7 @@ public class RentalsController {
     //!GET_PICTURE
     @GetMapping("/attachment/{id}")
     public ResponseEntity<?>  getImageByName(@PathVariable("id") Integer id){
-        byte[] image = attachmentService.getAttachmentById(id);
+        byte[] image = attachmentService.getImageByAttachmentId(id);
         return ResponseEntity.status(HttpStatus.OK)
                 .contentType(MediaType.valueOf("image/png"))
                 .body(image);
