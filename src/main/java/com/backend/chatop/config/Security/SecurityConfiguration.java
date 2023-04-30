@@ -18,6 +18,17 @@ public class SecurityConfiguration {
     private final JwtAuthenticationFilter jwtAuthFilter;
     private final AuthenticationProvider authenticationProvider;
 
+    private static final String[] AUTH_WHITELIST = {
+        "/swagger-ui.html",
+    "/v3/api-docs/**",
+    "/swagger-ui/**",
+    "/api/auth/login",
+    "/api/auth/register",
+    "/resources/static/**",
+    "/static/**",
+    "/api/files/rentals/**"
+};
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
@@ -26,6 +37,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests()
                 .requestMatchers("/api/auth/**", "/api/attachment/**")
                 .permitAll()
+                .requestMatchers(AUTH_WHITELIST).permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
