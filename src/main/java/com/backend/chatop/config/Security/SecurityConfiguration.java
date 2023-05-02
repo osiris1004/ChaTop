@@ -10,6 +10,8 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.backend.chatop.errors.GlobalExceptionHandler.MyAuthenticationEntryPoint.MyAuthenticationEntryPoint;
+
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -19,15 +21,15 @@ public class SecurityConfiguration {
     private final AuthenticationProvider authenticationProvider;
 
     private static final String[] AUTH_WHITELIST = {
-        "/swagger-ui.html",
-    "/v3/api-docs/**",
-    "/swagger-ui/**",
-    "/api/auth/login",
-    "/api/auth/register",
-    "/resources/static/**",
-    "/static/**",
-    "/api/files/rentals/**"
-};
+            "/swagger-ui.html",
+            "/v3/api-docs/**",
+            "/swagger-ui/**",
+            "/api/auth/login",
+            "/api/auth/register",
+            "/resources/static/**",
+            "/static/**",
+            "/api/files/rentals/**"
+    };
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -40,7 +42,12 @@ public class SecurityConfiguration {
                 .requestMatchers(AUTH_WHITELIST).permitAll()
                 .anyRequest()
                 .authenticated()
+
                 .and()
+                .exceptionHandling()
+                .authenticationEntryPoint(new MyAuthenticationEntryPoint())
+                .and()
+
                 .sessionManagement(management -> management
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)
@@ -48,4 +55,5 @@ public class SecurityConfiguration {
 
         return http.build();
     }
+
 }

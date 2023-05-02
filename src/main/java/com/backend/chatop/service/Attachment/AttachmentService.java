@@ -9,7 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.backend.chatop.FileUtils.ImageUtils;
-import com.backend.chatop.errors.ResourceNotFoundException;
+import com.backend.chatop.errors.GlobalExceptionHandler.ResourceNotFoundException;
 import com.backend.chatop.model.Attachment;
 import com.backend.chatop.repository.AttachmentRepository;
 import lombok.RequiredArgsConstructor;

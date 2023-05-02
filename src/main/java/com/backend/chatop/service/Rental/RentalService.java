@@ -2,7 +2,8 @@ package com.backend.chatop.service.Rental;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
-import com.backend.chatop.errors.ResourceNotFoundException;
+
+import com.backend.chatop.errors.GlobalExceptionHandler.ResourceNotFoundException;
 import com.backend.chatop.model.Rental;
 import com.backend.chatop.repository.RentalRepository;
 import lombok.*;

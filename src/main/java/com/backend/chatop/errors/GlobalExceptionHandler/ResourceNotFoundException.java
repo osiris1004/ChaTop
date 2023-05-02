@@ -1,4 +1,4 @@
-package com.backend.chatop.errors;
+package com.backend.chatop.errors.GlobalExceptionHandler;
 
 public class ResourceNotFoundException extends RuntimeException{
     private static final long serialVersionUID = 1L;
@@ -7,3 +7,8 @@ public class ResourceNotFoundException extends RuntimeException{
     }
 
 }
+
+
+
+
+
