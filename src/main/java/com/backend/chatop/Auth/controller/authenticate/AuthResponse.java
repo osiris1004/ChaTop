@@ -1,4 +1,4 @@
-package com.backend.chatop.Auth.registry;
+package com.backend.chatop.Auth.controller.authenticate;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegisterRequest {
-    private String name;
-    private String email;
-    private String password;
+
+public class AuthResponse {
+    private String token;
 }

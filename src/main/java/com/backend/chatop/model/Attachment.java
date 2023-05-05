@@ -37,11 +37,11 @@ public class Attachment {
     @Column(length=100000)
     private byte[] data;
 
-    // ***************************** */
-    @OneToOne(mappedBy = "attachment")
+    // // ***************************** */
+    // @OneToOne(mappedBy = "attachment")
     
-    @JsonBackReference
-    private Rental rental;
+    // @JsonBackReference
+    // private Rental rental;
 
     public Attachment(String fileName, String contentType, byte[] compressImage) {
         this.name = fileName;

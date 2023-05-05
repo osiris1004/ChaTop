@@ -1,8 +1,8 @@
 package com.backend.chatop.Auth.service;
 
-import com.backend.chatop.Auth.authenticate.AuthRequest;
-import com.backend.chatop.Auth.authenticate.AuthResponse;
-import com.backend.chatop.Auth.registry.RegisterRequest;
+import com.backend.chatop.Auth.controller.authenticate.AuthRequest;
+import com.backend.chatop.Auth.controller.authenticate.AuthResponse;
+import com.backend.chatop.Auth.controller.registry.RegisterRequest;
 import com.backend.chatop.config.Security.middleware.JwtService;
 import com.backend.chatop.model.User.Role;
 import com.backend.chatop.model.User.User;

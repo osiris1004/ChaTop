@@ -23,6 +23,7 @@ public class RequestRentals {
     private Integer owner_id;
     private Attachment attachment;
     private Date created_at;
+    private Date updated_at;
 
    
 }
