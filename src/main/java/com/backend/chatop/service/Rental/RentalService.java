@@ -2,7 +2,7 @@ package com.backend.chatop.service.Rental;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
-import com.backend.chatop.errors.ResourceNotFoundException;
+import com.backend.chatop.errors.GlobalExceptionHandler.ResourceNotFoundException;
 import com.backend.chatop.model.Rental;
 import com.backend.chatop.repository.RentalRepository;
 import lombok.*;
@@ -14,12 +14,10 @@ public class RentalService implements IRentalService{
 
     private final RentalRepository rentalRepository;
 
-
     @Override
     public List<Rental> getRentals() {
        return rentalRepository.findAll();
     }
-
 
     @Override
     public Rental getRentalById(Integer id) {
@@ -30,23 +28,18 @@ public class RentalService implements IRentalService{
         throw new ResourceNotFoundException("Not found rentals with id = " + id);
     }
 
-
     @Override
     public Rental saveRental(Rental rental) {
         return rentalRepository.save(rental);
     }
-
 
     @Override
     public Rental updateRental(Rental rental) {
         return rentalRepository.save(rental);
     }
     
-
     @Override
     public void deleteRental(Integer id) {
         rentalRepository.deleteById(id);
     }
-
-
 }

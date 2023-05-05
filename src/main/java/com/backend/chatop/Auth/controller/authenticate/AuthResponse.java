@@ -1,4 +1,4 @@
-package com.backend.chatop.Auth.authenticate;
+package com.backend.chatop.Auth.controller.authenticate;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,4 +1,4 @@
-package com.backend.chatop.config.middleware;
+package com.backend.chatop.config.Security.middleware;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

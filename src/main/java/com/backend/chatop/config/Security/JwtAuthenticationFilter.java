@@ -1,4 +1,4 @@
-package com.backend.chatop.config;
+package com.backend.chatop.config.Security;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -15,7 +15,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.backend.chatop.config.middleware.JwtService;
+import com.backend.chatop.config.Security.middleware.JwtService;
 
 import java.io.IOException;
 
