@@ -34,3 +34,4 @@ build/
 
 ##ignore properties file
 /src/main/resources/env.properties
+/src/main/resources/application.properties
