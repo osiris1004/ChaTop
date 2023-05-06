@@ -1,4 +1,4 @@
-package com.backend.chatop.config;
+package com.backend.chatop.config.Security;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

@@ -1,7 +1,9 @@
 package com.backend.chatop.model.User;
+import java.sql.Date;
 import java.util.Collection;
 import java.util.List;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,8 +18,8 @@ import lombok.*;
 @Builder
 @NoArgsConstructor 
 @AllArgsConstructor
-@Entity(name = "users") 
-@Table(name = "users")
+@Entity(name = "user") 
+@Table(name = "user")
 public class User implements UserDetails{
 
     @Id
@@ -32,6 +34,14 @@ public class User implements UserDetails{
 
     @Column(name = "password")
     private String password;
+
+    @CreationTimestamp
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private Date created_at;
+
+    @CreationTimestamp
+    @Column(name = "updated_at", updatable = true)
+    private Date updated_at;
 
     @Enumerated(EnumType.STRING) 
     private Role role;

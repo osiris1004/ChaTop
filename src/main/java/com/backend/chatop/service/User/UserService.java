@@ -2,7 +2,7 @@ package com.backend.chatop.service.User;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
 
-import com.backend.chatop.errors.ResourceNotFoundException;
+import com.backend.chatop.errors.GlobalExceptionHandler.ResourceNotFoundException;
 import com.backend.chatop.model.User.User;
 import com.backend.chatop.repository.UserRepository;
 import lombok.*;
