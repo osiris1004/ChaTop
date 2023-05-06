@@ -25,19 +25,33 @@ This is an example of how you may give instructions on setting up your project l
 ## Prerequisites
 This is an example of how to list things you need to use the software and how to install them.
 
+### Back-end
+
 1. Requirements
     - JDK 17 and above
     - Maven
 
-2. Clone the repo
+2. Clone the repo (backend system)
     >`https://github.com/osiris1004/OC-Project-2.git`
+   
 
 3. Running the application locally
     - There are several ways to run a Spring Boot application on your local machine. One way is to execute the main method in the **ChatopApplication class** from your IDE.
 
     - Alternatively you can use the Spring Boot Maven plugin like so:
         >`mvn spring-boot:run`
+ 
 
+### Front-end
+
+1. Clone the repo
+    >`git clone https://github.com/osiris1004/OC-Project-2-Front.git`
+
+2. Install NPM packages
+    >`npm install`
+
+3. npm
+    >`npm start`
 
 # Core concepts 
 

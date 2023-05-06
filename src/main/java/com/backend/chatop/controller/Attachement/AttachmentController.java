@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.backend.chatop.errors.GlobalExceptionHandler.ErrorMessage;
 import com.backend.chatop.model.Attachment;
-import com.backend.chatop.model.Rental;
 import com.backend.chatop.service.Attachment.AttachmentService;
 
 import io.swagger.v3.oas.annotations.Operation;
