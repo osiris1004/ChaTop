@@ -31,7 +31,7 @@ import jakarta.servlet.http.HttpServletRequest;
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
 
-@Tag(name = "Register", description = "Registration management APIs")
+@Tag(name = "Authentication", description = "Authentication management APIs")
 public class AuthController {
 
     private final AuthService service;

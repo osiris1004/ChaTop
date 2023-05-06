@@ -32,7 +32,7 @@ public class Rental {
     @Column(name = "price")
     private Double price;
 
-    @Column(name = "description")
+    @Column(name = "description", columnDefinition="LONGTEXT")
     private String description;
 
     @Column(name = "owner_id")
