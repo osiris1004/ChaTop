@@ -55,6 +55,6 @@ public class MailController {
         String addres_from = userService.getUserById(mail.getUser_id()).getEmail();
         String address_to = userService.getUserById(mail.getRental_id()).getEmail();
         
-        return new ResponseMail( emailService.sendConfirmationEmail(null, "ray2018095@gmail.com"));
+        return new ResponseMail( emailService.sendConfirmationEmail(mail.getMessage(), "ray2018095@gmail.com"));
     }
 }
