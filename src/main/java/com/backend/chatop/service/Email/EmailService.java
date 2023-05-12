@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Service
 public class EmailService {
-    private final static String EMAIL_CONFIRMATION_SUBJECT = "Confirm your udeesa account";
+    private final static String EMAIL_CONFIRMATION_SUBJECT = "Rental Message P3";
 
     @Autowired
     private JavaMailSender javaMailSender;
@@ -22,7 +22,7 @@ public class EmailService {
         // build email
         // send message
       try {
-        String message = "Welcome to Udeesa, test token" + token;
+        String message = token;
         String from = "no-reply@udeesa.org";
         send(email, from, message);
         return "Your email was successfully send";
