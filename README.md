@@ -34,8 +34,18 @@ This is an example of how to list things you need to use the software and how to
 2. Clone the repo (backend system)
     >`https://github.com/osiris1004/OC-Project-2.git`
    
+3. configure your env.properties
+    - create your env.properties at root and th following
+    ``` 
+        #data base info
+        DB_USER= xxxx
+        DB_PASSWORD= xxxx
 
-3. Running the application locally
+        #mail info
+        SENDER_USER=xxxxxx.gmail.com
+        SENDER_PASSORD=xxxxx
+    ```
+4. Running the application locally
     - There are several ways to run a Spring Boot application on your local machine. One way is to execute the main method in the **ChatopApplication class** from your IDE.
 
     - Alternatively you can use the Spring Boot Maven plugin like so:
